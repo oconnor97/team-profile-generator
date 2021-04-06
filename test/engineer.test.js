@@ -1,5 +1,5 @@
 const Engineer = require('../lib/engineer')
-
+const Employee = require('../lib/employee')
 
 // tests for the Engineer class
 describe('Engineer', () => {
@@ -11,6 +11,6 @@ describe('Engineer', () => {
     it('should return the github userName with the getGitHub function', () => {
         let role = 'Engineer';
         let engineerRole = new Engineer('Michael', 1, 'test@test.com', 'username');
-        expect(engineerRole.getRole(role)).toBe('Engineer');
+        expect(engineerRole.getRole()).toBe(role);
     });
 });
