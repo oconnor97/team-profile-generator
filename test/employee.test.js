@@ -1,12 +1,6 @@
 const Employee = require('../lib/employee')
 
 
-const Intern = require('../lib/intern');
-
-
-
-
-
 
 describe('Employee', () => {
     // Tests for recieving the values from the Emplyoee paramaters
