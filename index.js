@@ -140,6 +140,7 @@ function addIntern() {
 
 // funtion to generate the HTML file, Worked with a TA to get this working!!
 function generateHtml() {
+    console.log("Building your team.....")
     const htmlArray = []
     const firstHtml = `<!DOCTYPE html>
 <html lang="en">
@@ -169,13 +170,13 @@ function generateHtml() {
         </div>
         <div class="card-text">
             <p>Id: ${myTeam[i].id}</p>
-            <p>Email: ${myTeam[i].email}</p>`
+            <p>Email:<a href="mailto:${myTeam[i].email}?subject=subject text">${myTeam[i].email}</a></p>`
         if (myTeam[i].officeNumber) {
             newCard += `
                 <p>Office Number: ${myTeam[i].officeNumber}</p>`
         } else if (myTeam[i].github) {
             newCard += `
-            <p>Github: ${myTeam[i].github}</p>`
+            <p>Github:<a href="https://github.com/${myTeam[i].github}" target="_blank">${myTeam[i].github}</a></p>`
         } else if (myTeam[i].school) {
             newCard += `
             <p>School: ${myTeam[i].school}</p>`
@@ -184,7 +185,6 @@ function generateHtml() {
 
     </div>`
         htmlArray.push(newCard)
-        console.log(htmlArray)
     }
 
     const secondHtml = `
