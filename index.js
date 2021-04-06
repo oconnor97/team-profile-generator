@@ -46,6 +46,7 @@ function addTeamManager() {
 
 addTeamManager();
 
+// The beginning prompts for adding a Team Manager
 function addTeamMember() {
     inquirer.prompt([
         {
@@ -65,7 +66,7 @@ function addTeamMember() {
 };
 
 
-
+// Prompts to add a new Engineer
 function addEngineer() {
     inquirer.prompt([
         {
@@ -100,7 +101,7 @@ function addEngineer() {
 
         })
 }
-
+// The prompts for a new intern
 function addIntern() {
     inquirer.prompt([
         {
@@ -137,7 +138,7 @@ function addIntern() {
 }
 
 
-
+// funtion to generate the HTML file, Worked with a TA to get this working!!
 function generateHtml() {
     const htmlArray = []
     const firstHtml = `<!DOCTYPE html>
