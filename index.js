@@ -39,7 +39,6 @@ function addTeamManager() {
             const officeNumber = data.officeNumber
             const teamManager = new Manager(name, id, email, officeNumber);
             myTeam.push(teamManager)
-            console.log(myTeam)
             addTeamMember();
         })
 
@@ -61,7 +60,7 @@ function addTeamMember() {
                 addEngineer()
             } else if (data.teamMemberInfo === 'Add Intern') {
                 addIntern()
-            }
+            } else { generateHtml() }
         })
 };
 
@@ -94,8 +93,8 @@ function addEngineer() {
             const name = data.name;
             const id = data.id;
             const email = data.email;
-            const gitHub = data.github;
-            const newEngineer = new Engineer(name, id, email, gitHub)
+            const github = data.github;
+            const newEngineer = new Engineer(name, id, email, github)
             myTeam.push(newEngineer)
             addTeamMember();
 
@@ -131,10 +130,72 @@ function addIntern() {
             const email = data.email;
             const school = data.school;
             const newIntern = new Intern(name, id, email, school)
-            console.log(newIntern)
             myTeam.push(newIntern)
             addTeamMember();
 
         })
 }
 
+
+
+function generateHtml() {
+    const htmlArray = []
+    const firstHtml = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h2>My Team</h2>
+    </header>
+    <div class="container"> `
+    htmlArray.push(firstHtml);
+
+
+    for (let i = 0; i < myTeam.length; i++) {
+        let newCard = `
+        <div class="card-body">
+        <div class="card-header">
+            <h3 id="larger">${myTeam[i].name}</h3>
+            <h3>${myTeam[i].role}</h3>
+        </div>
+        <div class="card-text">
+            <p>Id: ${myTeam[i].id}</p>
+            <p>Email: ${myTeam[i].email}</p>`
+        if (myTeam[i].officeNumber) {
+            newCard += `
+                <p>Office Number: ${myTeam[i].officeNumber}</p>`
+        } else if (myTeam[i].github) {
+            newCard += `
+            <p>Github: ${myTeam[i].github}</p>`
+        } else if (myTeam[i].school) {
+            newCard += `
+            <p>School: ${myTeam[i].school}</p>`
+        }
+        newCard += `</div>
+
+    </div>`
+        htmlArray.push(newCard)
+        console.log(htmlArray)
+    }
+
+    const secondHtml = `
+    </div>
+    </body>
+    
+    </html`
+    htmlArray.push(secondHtml);
+
+
+
+    fs.writeFile('index.html', htmlArray.join(""), (err) => {
+        if (err) throw err;
+    })
+}
