@@ -16,6 +16,7 @@ h2 {
 .container {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
 }
 
 .card-body {
@@ -26,6 +27,7 @@ h2 {
     height: 350px;
     border: 2px solid blue;
     margin: 10px;
+    border-radius: 12%;
 }
 
 #larger {
@@ -39,6 +41,7 @@ h2 {
     width: 100%;
     height: fit-content;
     align-items: center;
+    border-radius: 12%;
 }
 
 .card-text {
