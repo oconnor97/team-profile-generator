@@ -18,7 +18,6 @@
     * HTML
     * Node.js
     * Jest
-    * Express
     * Inquirer
 
 ## Deployment
